@@ -1,0 +1,21 @@
+%% Mermaid flowchart for pdf-invoice-extractor
+flowchart LR
+    style Start fill:#228B22,stroke:#333,stroke-width:1px
+    Start([Start]) --> A[Select PDF File]
+    A --> B[Enter API Key & Model]
+    B --> C[Click Extract]
+    C --> D[Extract Text from PDF]
+    D --> E[Preprocess Text]
+    E --> F[Send Text to API]
+    F --> G{API Returned JSON?}
+    G -- yes --> H[Show JSON]
+    H --> I[Convert to XML]
+    I --> J[Show XML]
+    J --> K[Save XML File]
+    G -- no --> L[Show Error & Save Raw Output]
+
+    classDef green fill:#a6f3a6,stroke:#333;
+    classDef blue fill:#cfe9ff,stroke:#333;
+    class A,B blue;
+    class D,E,F,H,I,J blue;
+    class Start green;
